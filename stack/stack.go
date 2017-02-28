@@ -33,7 +33,7 @@ func (s *Stack) Peek() interface{} {
 	s.lock.Lock()
 
 	// check if Stack is empty
-	if s.isEmpty() {
+	if s.IsEmpty() {
 		return nil
 	}
 
@@ -65,7 +65,7 @@ func (s *Stack) Pop() interface{} {
 	s.lock.Lock()
 
 	// check length of the Stack
-	if s.isEmpty() {
+	if s.IsEmpty() {
 		return nil
 	}
 
@@ -81,7 +81,6 @@ func (s *Stack) Pop() interface{} {
 }
 
 // isEmpty returns whether or not the Stack is empty
-// Unexported because we use this after locking the mutex
-func (s *Stack) isEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return s.length == 0
 }
